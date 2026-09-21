@@ -1,8 +1,16 @@
 "use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import React, { useState } from "react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+} from "lucide-react";
 
 export default function HomePage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -12,67 +20,77 @@ export default function HomePage() {
       title: "Deep Tissue Massage",
       duration: "60 mins",
       price: "₹3,500",
-      image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800",
-      desc: "Targeted deep muscle relief relieving tension & chronic stress."
+      image:
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800",
+      desc: "Targeted deep muscle relief relieving tension & chronic stress.",
     },
     {
       title: "Detox Ritual",
       duration: "75 mins",
       price: "₹4,200",
-      image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800",
-      desc: "Exfoliating botanical wrap with lymphatic drainage treatment."
+      image:
+        "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800",
+      desc: "Exfoliating botanical wrap with lymphatic drainage treatment.",
     },
     {
       title: "Radiance Facial",
       duration: "60 mins",
       price: "₹3,200",
-      image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800",
-      desc: "Organic active enzymes restoring vibrant natural skin glow."
+      image:
+        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800",
+      desc: "Organic active enzymes restoring vibrant natural skin glow.",
     },
     {
       title: "Herbal Bath Therapy",
       duration: "45 mins",
       price: "₹2,800",
-      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
-      desc: "Custom steep of restorative essential oils & wild botanical flora."
-    }
+      image:
+        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
+      desc: "Custom steep of restorative essential oils & wild botanical flora.",
+    },
   ];
 
   const galleryImages = [
     {
       src: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
-      alt: "Botanical Detail"
+      alt: "Botanical Detail",
     },
     {
       src: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&q=80&w=800",
-      alt: "Candlelit Massage Suite"
+      alt: "Candlelit Massage Suite",
     },
     {
       src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
-      alt: "Courtyard Serenity Pool"
+      alt: "Courtyard Serenity Pool",
     },
     {
       src: "https://images.unsplash.com/photo-1512290900673-0498703e2e81?auto=format&fit=crop&q=80&w=800",
-      alt: "Zen Lotus Tea Ritual"
-    }
+      alt: "Zen Lotus Tea Ritual",
+    },
   ];
 
   const testimonials = [
     {
-      quote: "An unforgettable experience! The ambiance, the treatments and the staff were all beyond exceptional.",
+      quote:
+        "An unforgettable experience! The ambiance, the treatments and the staff were all beyond exceptional.",
       name: "Sarah M.",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200"
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200",
     },
     {
-      quote: "Botanica is my happy place. Every visit leaves me feeling refreshed, balanced and completely at peace.",
+      quote:
+        "Botanica is my happy place. Every visit leaves me feeling refreshed, balanced and completely at peace.",
       name: "Priya S.",
-      avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200"
+      avatar:
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200",
     },
     {
-      quote: "A truly luxurious and rejuvenating experience. The attention to detail is remarkable.",
+      quote:
+        "A truly luxurious and rejuvenating experience. The attention to detail is remarkable.",
       name: "Neha K.",
-      avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=200"
-    }
+      avatar:
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=200",
+    },
   ];
 
   return (
@@ -112,11 +130,36 @@ export default function HomePage() {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-9 text-xs font-sans-clean tracking-[0.18em] uppercase text-[#3D4842]">
-            <Link href="/" className="text-[#0D1612] py-1 border-b border-[#1C2826]">Home</Link>
-            <Link href="/services" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Services</Link>
-            <a href="#experience" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Gallery</a>
-            <a href="#philosophy" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">About</a>
-            <a href="#contact" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Contact</a>
+            <Link
+              href="/"
+              className="text-[#0D1612] py-1 border-b border-[#1C2826]"
+            >
+              Home
+            </Link>
+            <Link
+              href="/services"
+              className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]"
+            >
+              Services
+            </Link>
+            <Link
+              href="/gallery"
+              className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]"
+            >
+              Gallery
+            </Link>
+            <a
+              href="#philosophy"
+              className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]"
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]"
+            >
+              Contact
+            </a>
           </nav>
 
           <div>
@@ -131,9 +174,11 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen pt-20 flex items-center overflow-hidden bg-[#F2EDE4]">
+      <section
+        id="home"
+        className="relative min-h-screen pt-20 flex items-center overflow-hidden bg-[#F2EDE4]"
+      >
         <div className="w-full min-h-[calc(100vh-80px)] flex flex-col lg:flex-row relative">
-          
           <div className="w-full lg:w-[48%] px-8 sm:px-12 lg:px-20 py-16 flex flex-col justify-between z-10">
             <div className="pt-8">
               <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#6B756E] font-medium block mb-4">
@@ -144,7 +189,8 @@ export default function HomePage() {
                 <span className="italic font-light">of</span> Unwinding.
               </h1>
               <p className="text-sm sm:text-base font-sans-clean font-light text-[#4A5550] max-w-md leading-relaxed mb-10">
-                A curated wellness experience designed to restore your mind, body and natural glow.
+                A curated wellness experience designed to restore your mind,
+                body and natural glow.
               </p>
 
               <div className="flex flex-wrap items-center gap-6">
@@ -191,12 +237,14 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
       {/* Featured Services */}
-      <section id="treatments" className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto">
+      <section
+        id="treatments"
+        className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto"
+      >
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#737E77] font-medium block mb-3">
@@ -208,9 +256,13 @@ export default function HomePage() {
           </div>
           <div className="max-w-md flex flex-col items-start md:items-end">
             <p className="text-xs sm:text-sm font-sans-clean text-[#5A6660] leading-relaxed md:text-right mb-4">
-              Thoughtfully crafted rituals that blend ancient wisdom with modern techniques for deep, lasting renewal.
+              Thoughtfully crafted rituals that blend ancient wisdom with modern
+              techniques for deep, lasting renewal.
             </p>
-            <Link href="/services" className="text-xs font-sans-clean tracking-[0.18em] uppercase text-[#1C2826] hover:text-[#4B5E57] flex items-center gap-2 group transition-colors">
+            <Link
+              href="/services"
+              className="text-xs font-sans-clean tracking-[0.18em] uppercase text-[#1C2826] hover:text-[#4B5E57] flex items-center gap-2 group transition-colors"
+            >
               <span>View All Services</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -241,7 +293,9 @@ export default function HomePage() {
                   <div className="flex items-center gap-2 text-xs font-sans-clean text-[#6B7770] tracking-wider uppercase mb-3">
                     <span>{treatment.duration}</span>
                     <span>•</span>
-                    <span className="font-semibold text-[#1C2826]">{treatment.price}</span>
+                    <span className="font-semibold text-[#1C2826]">
+                      {treatment.price}
+                    </span>
                   </div>
                   <p className="text-xs font-sans-clean text-[#5B6660] font-light leading-relaxed">
                     {treatment.desc}
@@ -260,7 +314,10 @@ export default function HomePage() {
       </section>
 
       {/* Our Philosophy */}
-      <section id="philosophy" className="bg-[#121A18] text-[#F7F5F0] overflow-hidden">
+      <section
+        id="philosophy"
+        className="bg-[#121A18] text-[#F7F5F0] overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 min-h-[450px] lg:min-h-[620px] relative overflow-hidden">
             <img
@@ -280,21 +337,35 @@ export default function HomePage() {
               <span className="italic font-light">A Way of Life.</span>
             </h2>
             <p className="text-sm font-sans-clean font-light text-[#BCC8C2] leading-relaxed mb-10 max-w-lg">
-              At Botanica, we believe true wellness goes beyond the treatment room. It's a journey of balance, mindfulness and self-care — woven into every moment of your day.
+              At Botanica, we believe true wellness goes beyond the treatment
+              room. It's a journey of balance, mindfulness and self-care — woven
+              into every moment of your day.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[#2A3834] mb-10">
               <div>
-                <span className="text-xs font-serif-luxury text-[#C7B288] block mb-1">01</span>
-                <span className="text-[11px] font-sans-clean tracking-[0.15em] uppercase text-[#E0E8E4] font-medium block">Natural Ingredients</span>
+                <span className="text-xs font-serif-luxury text-[#C7B288] block mb-1">
+                  01
+                </span>
+                <span className="text-[11px] font-sans-clean tracking-[0.15em] uppercase text-[#E0E8E4] font-medium block">
+                  Natural Ingredients
+                </span>
               </div>
               <div>
-                <span className="text-xs font-serif-luxury text-[#C7B288] block mb-1">02</span>
-                <span className="text-[11px] font-sans-clean tracking-[0.15em] uppercase text-[#E0E8E4] font-medium block">Holistic Approach</span>
+                <span className="text-xs font-serif-luxury text-[#C7B288] block mb-1">
+                  02
+                </span>
+                <span className="text-[11px] font-sans-clean tracking-[0.15em] uppercase text-[#E0E8E4] font-medium block">
+                  Holistic Approach
+                </span>
               </div>
               <div>
-                <span className="text-xs font-serif-luxury text-[#C7B288] block mb-1">03</span>
-                <span className="text-[11px] font-sans-clean tracking-[0.15em] uppercase text-[#E0E8E4] font-medium block">Expert Therapists</span>
+                <span className="text-xs font-serif-luxury text-[#C7B288] block mb-1">
+                  03
+                </span>
+                <span className="text-[11px] font-sans-clean tracking-[0.15em] uppercase text-[#E0E8E4] font-medium block">
+                  Expert Therapists
+                </span>
               </div>
             </div>
 
@@ -312,7 +383,10 @@ export default function HomePage() {
       </section>
 
       {/* Experience Gallery */}
-      <section id="experience" className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto">
+      <section
+        id="experience"
+        className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto"
+      >
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           <div className="w-full lg:w-1/3 pt-4">
             <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#717E77] block mb-3">
@@ -322,20 +396,25 @@ export default function HomePage() {
               Step Into Serenity
             </h2>
             <p className="text-sm font-sans-clean text-[#56635C] font-light leading-relaxed mb-8">
-              From tranquil spaces to soothing rituals, every detail is designed to help you slow down and feel renewed.
+              From tranquil spaces to soothing rituals, every detail is designed
+              to help you slow down and feel renewed.
             </p>
             <Link
-              href="/services"
+              href="/gallery"
               className="inline-flex items-center gap-2 text-xs font-sans-clean tracking-[0.18em] uppercase text-[#1C2826] hover:text-[#485E56] transition-colors py-1 border-b border-[#1C2826]"
             >
-              <span>Explore Services</span>
+              <span>Explore Gallery</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           <div className="w-full lg:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {galleryImages.map((img, idx) => (
-              <div key={idx} className="h-64 sm:h-80 overflow-hidden group relative bg-[#E2DDCF]">
+              <Link
+                href="/gallery"
+                key={idx}
+                className="h-64 sm:h-80 overflow-hidden group relative bg-[#E2DDCF] block"
+              >
                 <img
                   src={img.src}
                   alt={img.alt}
@@ -345,7 +424,7 @@ export default function HomePage() {
                 <div className="absolute bottom-3 left-3 right-3 text-[10px] font-sans-clean tracking-widest text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase">
                   {img.alt}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -366,14 +445,22 @@ export default function HomePage() {
 
             <div className="flex items-center gap-3">
               <button
-                onClick={() => setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                onClick={() =>
+                  setActiveTestimonial((prev) =>
+                    prev === 0 ? testimonials.length - 1 : prev - 1,
+                  )
+                }
                 className="w-10 h-10 rounded-full border border-[#374943] hover:border-[#C7B288] text-[#E0E8E4] flex items-center justify-center transition-colors"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                onClick={() =>
+                  setActiveTestimonial((prev) =>
+                    prev === testimonials.length - 1 ? 0 : prev + 1,
+                  )
+                }
                 className="w-10 h-10 rounded-full border border-[#374943] hover:border-[#C7B288] text-[#E0E8E4] flex items-center justify-center transition-colors"
                 aria-label="Next testimonial"
               >
@@ -387,7 +474,9 @@ export default function HomePage() {
               <div
                 key={idx}
                 className={`p-8 bg-[#18221F] border border-[#273833] rounded-sm flex flex-col justify-between transition-all duration-300 ${
-                  idx === activeTestimonial ? 'border-[#C7B288] shadow-lg' : 'opacity-85 hover:opacity-100'
+                  idx === activeTestimonial
+                    ? "border-[#C7B288] shadow-lg"
+                    : "opacity-85 hover:opacity-100"
                 }`}
               >
                 <p className="font-serif-luxury text-lg italic text-[#E2EAE5] leading-relaxed mb-8">
@@ -415,10 +504,12 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]">
+      <footer
+        id="contact"
+        className="bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]"
+      >
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            
             <div className="md:col-span-1">
               <Link href="/" className="flex flex-col mb-4">
                 <span className="font-serif-luxury text-2xl tracking-[0.25em] text-[#FAF8F5] uppercase">
@@ -438,11 +529,43 @@ export default function HomePage() {
                 Quick Links
               </h4>
               <ul className="space-y-3 text-xs font-sans-clean text-[#99A8A0]">
-                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
-                <li><a href="#experience" className="hover:text-white transition-colors">Gallery</a></li>
-                <li><a href="#philosophy" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                <li>
+                  <Link href="/" className="hover:text-white transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services"
+                    className="hover:text-white transition-colors"
+                  >
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/gallery"
+                    className="hover:text-white transition-colors"
+                  >
+                    Gallery
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#philosophy"
+                    className="hover:text-white transition-colors"
+                  >
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    className="hover:text-white transition-colors"
+                  >
+                    Contact
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -490,19 +613,21 @@ export default function HomePage() {
                 <path d="M50 90 Q80 50 90 30 Q60 40 50 90 Z" />
               </svg>
             </div>
-
           </div>
 
           <div className="pt-8 border-t border-[#182421] flex flex-col sm:flex-row items-center justify-between text-[11px] font-sans-clean text-[#62736B] gap-4">
             <p>© 2026 Botanica Wellness. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-[#A0B0A8] transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#A0B0A8] transition-colors">Terms & Conditions</a>
+              <a href="#" className="hover:text-[#A0B0A8] transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-[#A0B0A8] transition-colors">
+                Terms & Conditions
+              </a>
             </div>
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
