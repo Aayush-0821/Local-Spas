@@ -154,21 +154,21 @@ export default function HomePage() {
             >
               About
             </a>
-            <a
-              href="#contact"
+            <Link
+              href="/location"
               className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]"
             >
-              Contact
-            </a>
+              Location
+            </Link>
           </nav>
 
           <div>
-            <Link
-              href="/services"
+            <a
+              href="mailto:hello@botanica.com?subject=Book%20a%20Demo%20Request"
               className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
             >
-              Book a Treatment
-            </Link>
+              Book a Demo
+            </a>
           </div>
         </div>
       </header>
@@ -194,13 +194,13 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-6">
-                <Link
-                  href="/services"
+                <a
+                  href="mailto:hello@botanica.com?subject=Book%20a%20Demo%20Request"
                   className="px-7 py-3.5 bg-[#1C2826] hover:bg-[#2D3F3C] text-[#F7F5F0] text-xs font-sans-clean tracking-[0.2em] uppercase flex items-center gap-3 transition-all duration-300 group shadow-md"
                 >
-                  <span>Book a Treatment</span>
+                  <span>Book a Demo</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                </a>
 
                 <a
                   href="#philosophy"
@@ -503,9 +503,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer / Location */}
       <footer
-        id="contact"
+        id="location"
         className="bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]"
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
@@ -560,10 +560,10 @@ export default function HomePage() {
                 </li>
                 <li>
                   <a
-                    href="#contact"
+                    href="#location"
                     className="hover:text-white transition-colors"
                   >
-                    Contact
+                    Location
                   </a>
                 </li>
               </ul>
@@ -571,9 +571,13 @@ export default function HomePage() {
 
             <div>
               <h4 className="text-xs font-sans-clean tracking-[0.2em] uppercase text-[#C7B288] mb-6">
-                Contact
+                Location & Details
               </h4>
               <ul className="space-y-3 text-xs font-sans-clean text-[#99A8A0]">
+                <li className="flex items-center gap-2.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#C7B288]" />
+                  <span>Green Park, New Delhi</span>
+                </li>
                 <li className="flex items-center gap-2.5">
                   <Phone className="w-3.5 h-3.5 text-[#C7B288]" />
                   <span>+91 98765 43210</span>
@@ -581,10 +585,6 @@ export default function HomePage() {
                 <li className="flex items-center gap-2.5">
                   <Mail className="w-3.5 h-3.5 text-[#C7B288]" />
                   <span>hello@botanica.com</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#C7B288]" />
-                  <span>Green Park, New Delhi</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Clock className="w-3.5 h-3.5 text-[#C7B288]" />
