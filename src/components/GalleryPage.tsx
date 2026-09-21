@@ -82,7 +82,7 @@ export default function GalleryPage() {
 
       {/* Header / Navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F7F5F0]/90 backdrop-blur-md border-b border-[#E3DEC3]/40">
-        <div className="w-full px-6 sm:px-12 lg:px-16 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
           <Link href="/" className="group flex flex-col">
             <span className="font-serif-luxury text-2xl font-normal tracking-[0.25em] text-[#1C2826] uppercase group-hover:text-[#3B4E47] transition-colors">
               Botanica
@@ -92,20 +92,20 @@ export default function GalleryPage() {
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-10 text-xs font-sans-clean tracking-[0.18em] uppercase text-[#3D4842]">
+          <nav className="hidden md:flex items-center space-x-9 text-xs font-sans-clean tracking-[0.18em] uppercase text-[#3D4842]">
             <Link href="/" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Home</Link>
             <Link href="/services" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Services</Link>
             <Link href="/gallery" className="text-[#0D1612] py-1 border-b border-[#1C2826]">Gallery</Link>
             <Link href="/#philosophy" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">About</Link>
-            <a href="#contact" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Contact</a>
+            <Link href="/location" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Location</Link>
           </nav>
 
           <div>
             <Link
-              href="/services"
+              href="/book-demo"
               className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
             >
-              Book a Treatment
+              Book a Demo
             </Link>
           </div>
         </div>
@@ -207,8 +207,8 @@ export default function GalleryPage() {
       )}
 
       {/* Footer */}
-      <footer id="contact" className="w-full bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]">
-        <div className="w-full px-6 sm:px-12 lg:px-20">
+      <footer className="w-full bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             
             <div className="md:col-span-1">
@@ -234,15 +234,19 @@ export default function GalleryPage() {
                 <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
                 <li><Link href="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
                 <li><Link href="/#philosophy" className="hover:text-white transition-colors">About</Link></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                <li><Link href="/location" className="hover:text-white transition-colors">Location</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-xs font-sans-clean tracking-[0.2em] uppercase text-[#C7B288] mb-6">
-                Contact
+                Location & Details
               </h4>
               <ul className="space-y-3 text-xs font-sans-clean text-[#99A8A0]">
+                <li className="flex items-center gap-2.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#C7B288]" />
+                  <span>Green Park, New Delhi</span>
+                </li>
                 <li className="flex items-center gap-2.5">
                   <Phone className="w-3.5 h-3.5 text-[#C7B288]" />
                   <span>+91 98765 43210</span>
@@ -250,10 +254,6 @@ export default function GalleryPage() {
                 <li className="flex items-center gap-2.5">
                   <Mail className="w-3.5 h-3.5 text-[#C7B288]" />
                   <span>hello@botanica.com</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#C7B288]" />
-                  <span>Green Park, New Delhi</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Clock className="w-3.5 h-3.5 text-[#C7B288]" />

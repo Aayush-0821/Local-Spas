@@ -163,12 +163,12 @@ export default function HomePage() {
           </nav>
 
           <div>
-            <a
-              href="mailto:hello@botanica.com?subject=Book%20a%20Demo%20Request"
+            <Link
+              href="/book-demo"
               className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
             >
               Book a Demo
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -194,13 +194,13 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-6">
-                <a
-                  href="mailto:hello@botanica.com?subject=Book%20a%20Demo%20Request"
+                <Link
+                  href="/book-demo"
                   className="px-7 py-3.5 bg-[#1C2826] hover:bg-[#2D3F3C] text-[#F7F5F0] text-xs font-sans-clean tracking-[0.2em] uppercase flex items-center gap-3 transition-all duration-300 group shadow-md"
                 >
                   <span>Book a Demo</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
+                </Link>
 
                 <a
                   href="#philosophy"
@@ -209,12 +209,6 @@ export default function HomePage() {
                   Explore Our Philosophy
                 </a>
               </div>
-            </div>
-
-            <div className="mt-16 flex items-center gap-4 text-xs font-sans-clean tracking-[0.2em] text-[#6E7B74]">
-              <span className="text-[#1C2826] font-semibold">01</span>
-              <div className="w-16 h-px bg-[#B0A898]"></div>
-              <span>03</span>
             </div>
           </div>
 
@@ -231,10 +225,6 @@ export default function HomePage() {
                 Wellness is a form of self respect
               </span>
               <div className="w-px h-12 bg-[#E0D8C8]/40"></div>
-              <div className="flex flex-col gap-2 text-[10px] font-sans-clean tracking-widest text-[#E0D8C8]/60">
-                <span className="text-white font-medium">01</span>
-                <span>03</span>
-              </div>
             </div>
           </div>
         </div>
@@ -374,7 +364,7 @@ export default function HomePage() {
                 href="/services"
                 className="inline-flex items-center gap-3 px-7 py-3 border border-[#3E524C] hover:border-[#C7B288] text-xs font-sans-clean tracking-[0.2em] uppercase text-[#E0E8E4] hover:text-[#C7B288] transition-all duration-300"
               >
-                <span>View Our Services</span>
+                <span>Visit Us</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -447,7 +437,7 @@ export default function HomePage() {
               <button
                 onClick={() =>
                   setActiveTestimonial((prev) =>
-                    prev === 0 ? testimonials.length - 1 : prev - 1,
+                    prev === 0 ? testimonials.length - 1 : prev - 1
                   )
                 }
                 className="w-10 h-10 rounded-full border border-[#374943] hover:border-[#C7B288] text-[#E0E8E4] flex items-center justify-center transition-colors"
@@ -458,7 +448,7 @@ export default function HomePage() {
               <button
                 onClick={() =>
                   setActiveTestimonial((prev) =>
-                    prev === testimonials.length - 1 ? 0 : prev + 1,
+                    prev === testimonials.length - 1 ? 0 : prev + 1
                   )
                 }
                 className="w-10 h-10 rounded-full border border-[#374943] hover:border-[#C7B288] text-[#E0E8E4] flex items-center justify-center transition-colors"
@@ -503,11 +493,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer / Location */}
-      <footer
-        id="location"
-        className="bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]"
-      >
+      {/* Footer */}
+      <footer className="bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="md:col-span-1">
@@ -559,12 +546,12 @@ export default function HomePage() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#location"
+                  <Link
+                    href="/location"
                     className="hover:text-white transition-colors"
                   >
                     Location
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

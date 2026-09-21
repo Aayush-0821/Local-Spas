@@ -70,12 +70,12 @@ export default function LocationPage() {
           </nav>
 
           <div>
-            <a
-              href="mailto:hello@botanica.com?subject=Book%20a%20Demo%20Request"
+            <Link
+              href="/book-demo"
               className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
             >
               Book a Demo
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -207,6 +207,9 @@ export default function LocationPage() {
               </Link>
               <Link href="/gallery" className="hover:text-[#A0B0A8] transition-colors">
                 Gallery
+              </Link>
+              <Link href="/location" className="hover:text-[#A0B0A8] transition-colors">
+                Location
               </Link>
             </div>
           </div>

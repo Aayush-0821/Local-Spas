@@ -124,18 +124,18 @@ export default function ServicesPage() {
           <nav className="hidden md:flex items-center space-x-9 text-xs font-sans-clean tracking-[0.18em] uppercase text-[#3D4842]">
             <Link href="/" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Home</Link>
             <Link href="/services" className="text-[#0D1612] py-1 border-b border-[#1C2826]">Services</Link>
-            <Link href="/#experience" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Gallery</Link>
+            <Link href="/gallery" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Gallery</Link>
             <Link href="/#philosophy" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">About</Link>
-            <a href="#contact" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Contact</a>
+            <Link href="/location" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Location</Link>
           </nav>
 
           <div>
-            <a
-              href="#book"
+            <Link
+              href="/book-demo"
               className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
             >
-              Book a Treatment
-            </a>
+              Book a Demo
+            </Link>
           </div>
         </div>
       </header>
@@ -213,7 +213,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services List Section */}
-      <section id="book" className="px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto pb-28">
+      <section className="px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto pb-28">
         <div className="space-y-4">
           {filteredServices.map((service) => (
             <div
@@ -245,12 +245,12 @@ export default function ServicesPage() {
               </div>
 
               <div className="w-full sm:w-auto flex justify-end shrink-0 pt-2 sm:pt-0">
-                <a
-                  href="#book"
+                <Link
+                  href="/book-demo"
                   className="w-full sm:w-auto px-7 py-3 text-center text-xs font-sans-clean tracking-[0.18em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] rounded-full transition-all duration-300 shadow-sm"
                 >
                   Book Now
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -258,7 +258,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]">
+      <footer className="bg-[#0B100F] text-[#D8E0DC] pt-20 pb-12 border-t border-[#1C2724]">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             
@@ -283,17 +283,21 @@ export default function ServicesPage() {
               <ul className="space-y-3 text-xs font-sans-clean text-[#99A8A0]">
                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
                 <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
-                <li><Link href="/#experience" className="hover:text-white transition-colors">Gallery</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
                 <li><Link href="/#philosophy" className="hover:text-white transition-colors">About</Link></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                <li><Link href="/location" className="hover:text-white transition-colors">Location</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-xs font-sans-clean tracking-[0.2em] uppercase text-[#C7B288] mb-6">
-                Contact
+                Location & Details
               </h4>
               <ul className="space-y-3 text-xs font-sans-clean text-[#99A8A0]">
+                <li className="flex items-center gap-2.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#C7B288]" />
+                  <span>Green Park, New Delhi</span>
+                </li>
                 <li className="flex items-center gap-2.5">
                   <Phone className="w-3.5 h-3.5 text-[#C7B288]" />
                   <span>+91 98765 43210</span>
@@ -301,10 +305,6 @@ export default function ServicesPage() {
                 <li className="flex items-center gap-2.5">
                   <Mail className="w-3.5 h-3.5 text-[#C7B288]" />
                   <span>hello@botanica.com</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#C7B288]" />
-                  <span>Green Park, New Delhi</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Clock className="w-3.5 h-3.5 text-[#C7B288]" />
