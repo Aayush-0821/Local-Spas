@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Compass } from "lucide-react";
 
 export default function BookDemoPage() {
@@ -23,8 +23,8 @@ export default function BookDemoPage() {
     window.location.href = `mailto:hello@botanica.com?subject=${mailtoSubject}&body=${mailtoBody}`;
   };
 
-  // Animation variants
-  const fadeInUp = {
+  // Explicitly typed animation variants
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -33,7 +33,7 @@ export default function BookDemoPage() {
     },
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -136,7 +136,7 @@ export default function BookDemoPage() {
             alt="Botanica Sanctuary Ambiance"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#F7F5F0]/20 to-[#F7F5F0]/80"></div>
+          <div className="absolute inset-0 bg-linear-to-l from-transparent via-[#F7F5F0]/20 to-[#F7F5F0]/80"></div>
         </motion.div>
 
         {/* Hero Text */}

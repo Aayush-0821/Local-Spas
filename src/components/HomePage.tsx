@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   ArrowRight,
   ChevronLeft,
@@ -97,8 +97,8 @@ export default function HomePage() {
     },
   ];
 
-  // Motion animation variants
-  const fadeInUp = {
+  // Motion animation variants typed with the Variants interface
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -107,7 +107,7 @@ export default function HomePage() {
     },
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -345,7 +345,7 @@ export default function HomePage() {
               alt="Luxury Spa Serenity Sanctuary"
               className="w-full h-full object-cover object-center opacity-90"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#101816]/70 via-transparent to-black/20"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-[#101816]/70 via-transparent to-black/20"></div>
 
             <div className="hidden lg:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col items-center gap-6 text-white/80 z-20">
               <span className="text-[10px] font-sans-clean tracking-[0.35em] uppercase [writing-mode:vertical-lr] rotate-180 font-light text-[#E0D8C8]">
@@ -454,14 +454,14 @@ export default function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="w-full lg:w-1/2 h-72 sm:h-96 lg:min-h-[620px] relative overflow-hidden"
+            className="w-full lg:w-1/2 h-72 sm:h-96 lg:min-h-155 relative overflow-hidden"
           >
             <img
               src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1200"
               alt="Outdoor Sanctuary Bath"
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/40 via-transparent to-[#121A18]/90 lg:to-[#121A18]"></div>
+            <div className="absolute inset-0 bg-linear-to-t lg:bg-linear-to-r from-black/40 via-transparent to-[#121A18]/90 lg:to-[#121A18]"></div>
           </motion.div>
 
           <motion.div

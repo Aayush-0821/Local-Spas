@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Navigation } from "lucide-react";
 
 export default function LocationPage() {
@@ -11,8 +11,8 @@ export default function LocationPage() {
     address
   )}`;
 
-  // Animation variants
-  const fadeInUp = {
+  // Animation variants typed with the Variants interface
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -21,7 +21,7 @@ export default function LocationPage() {
     },
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,

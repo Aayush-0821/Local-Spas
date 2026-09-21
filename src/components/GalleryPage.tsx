@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, X, Maximize2 } from 'lucide-react';
 
 interface GalleryItem {
@@ -67,8 +67,8 @@ export default function GalleryPage() {
     ? galleryItems
     : galleryItems.filter(item => item.category === activeCategory);
 
-  // Motion Variants
-  const fadeInUp = {
+  // Motion Variants strictly typed with Variants interface
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 24 },
     visible: { 
       opacity: 1, 
@@ -77,7 +77,7 @@ export default function GalleryPage() {
     }
   };
 
-  const gridContainer = {
+  const gridContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -85,7 +85,7 @@ export default function GalleryPage() {
     }
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { 
       opacity: 1, 
@@ -99,7 +99,7 @@ export default function GalleryPage() {
     }
   };
 
-  const modalVariants = {
+  const modalVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95, y: 10 },
     visible: { 
       opacity: 1, 

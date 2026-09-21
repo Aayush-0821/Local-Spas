@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 interface ServiceItem {
@@ -96,8 +96,8 @@ export default function ServicesPage() {
     ? services
     : services.filter(s => s.category === activeCategory);
 
-  // Animation Variants
-  const fadeInUp = {
+  // Motion Variants strictly typed with the Variants interface
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 24 },
     visible: { 
       opacity: 1, 
@@ -106,7 +106,7 @@ export default function ServicesPage() {
     }
   };
 
-  const heroStagger = {
+  const heroStagger: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -114,7 +114,7 @@ export default function ServicesPage() {
     }
   };
 
-  const listContainer = {
+  const listContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -122,7 +122,7 @@ export default function ServicesPage() {
     }
   };
 
-  const listItem = {
+  const listItem: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
@@ -254,7 +254,7 @@ export default function ServicesPage() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-right mt-2"
             >
-              <span className="text-[10px] font-sans-clean tracking-[0.25em] uppercase text-[#526058] max-w-[160px] block font-medium leading-relaxed">
+              <span className="text-[10px] font-sans-clean tracking-[0.25em] uppercase text-[#526058] max-w-40 block font-medium leading-relaxed">
                 Wellness is a journey <br /> not a destination
               </span>
             </motion.div>
