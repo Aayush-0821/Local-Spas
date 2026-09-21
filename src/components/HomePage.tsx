@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function HomePage() {
@@ -76,7 +77,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#F7F5F0] text-[#1A221E] font-sans antialiased selection:bg-[#1C2826] selection:text-[#E2D8C3]">
-      {/* Custom Inline Styles for Typography and Clipping Mask */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
         
@@ -88,7 +88,6 @@ export default function HomePage() {
           font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
         }
 
-        /* Diagonal Split Hero Polygon Mask */
         .clip-hero-diagonal {
           clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
         }
@@ -103,30 +102,30 @@ export default function HomePage() {
       {/* Header / Navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F7F5F0]/90 backdrop-blur-md border-b border-[#E3DEC3]/40">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
-          <a href="#" className="group flex flex-col">
+          <Link href="/" className="group flex flex-col">
             <span className="font-serif-luxury text-2xl font-normal tracking-[0.25em] text-[#1C2826] uppercase group-hover:text-[#3B4E47] transition-colors">
               Botanica
             </span>
             <span className="text-[9px] font-sans-clean tracking-[0.3em] uppercase text-[#6E7B74] -mt-1">
               Wellness
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-9 text-xs font-sans-clean tracking-[0.18em] uppercase text-[#3D4842]">
-            <a href="#home" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Home</a>
-            <a href="#treatments" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Services</a>
+            <Link href="/" className="text-[#0D1612] py-1 border-b border-[#1C2826]">Home</Link>
+            <Link href="/services" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Services</Link>
             <a href="#experience" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Gallery</a>
             <a href="#philosophy" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">About</a>
             <a href="#contact" className="hover:text-[#0D1612] transition-colors py-1 border-b border-transparent hover:border-[#1C2826]">Contact</a>
           </nav>
 
           <div>
-            <a
-              href="#book"
+            <Link
+              href="/services"
               className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
             >
               Book a Treatment
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -149,13 +148,13 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-6">
-                <a
-                  href="#book"
+                <Link
+                  href="/services"
                   className="px-7 py-3.5 bg-[#1C2826] hover:bg-[#2D3F3C] text-[#F7F5F0] text-xs font-sans-clean tracking-[0.2em] uppercase flex items-center gap-3 transition-all duration-300 group shadow-md"
                 >
                   <span>Book a Treatment</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
+                </Link>
 
                 <a
                   href="#philosophy"
@@ -196,32 +195,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Signature Treatments */}
+      {/* Featured Services */}
       <section id="treatments" className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#737E77] font-medium block mb-3">
-              Featured Treatments
+              Featured Services
             </span>
             <h2 className="font-serif-luxury text-4xl sm:text-5xl font-normal text-[#1A2320]">
-              Signature Treatments
+              Signature Services
             </h2>
           </div>
           <div className="max-w-md flex flex-col items-start md:items-end">
             <p className="text-xs sm:text-sm font-sans-clean text-[#5A6660] leading-relaxed md:text-right mb-4">
               Thoughtfully crafted rituals that blend ancient wisdom with modern techniques for deep, lasting renewal.
             </p>
-            <a href="#all-treatments" className="text-xs font-sans-clean tracking-[0.18em] uppercase text-[#1C2826] hover:text-[#4B5E57] flex items-center gap-2 group transition-colors">
-              <span>View All Treatments</span>
+            <Link href="/services" className="text-xs font-sans-clean tracking-[0.18em] uppercase text-[#1C2826] hover:text-[#4B5E57] flex items-center gap-2 group transition-colors">
+              <span>View All Services</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {treatments.map((treatment, index) => (
-            <div
+            <Link
               key={index}
+              href="/services"
               className="group bg-[#EFECE6] border border-[#E0DBCF] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-lg flex flex-col justify-between"
             >
               <div>
@@ -254,7 +254,7 @@ export default function HomePage() {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -299,13 +299,13 @@ export default function HomePage() {
             </div>
 
             <div>
-              <a
-                href="#philosophy-detail"
+              <Link
+                href="/services"
                 className="inline-flex items-center gap-3 px-7 py-3 border border-[#3E524C] hover:border-[#C7B288] text-xs font-sans-clean tracking-[0.2em] uppercase text-[#E0E8E4] hover:text-[#C7B288] transition-all duration-300"
               >
-                <span>Our Philosophy</span>
+                <span>View Our Services</span>
                 <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -324,13 +324,13 @@ export default function HomePage() {
             <p className="text-sm font-sans-clean text-[#56635C] font-light leading-relaxed mb-8">
               From tranquil spaces to soothing rituals, every detail is designed to help you slow down and feel renewed.
             </p>
-            <a
-              href="#gallery"
+            <Link
+              href="/services"
               className="inline-flex items-center gap-2 text-xs font-sans-clean tracking-[0.18em] uppercase text-[#1C2826] hover:text-[#485E56] transition-colors py-1 border-b border-[#1C2826]"
             >
-              <span>Explore Gallery</span>
+              <span>Explore Services</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
 
           <div className="w-full lg:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -420,14 +420,14 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             
             <div className="md:col-span-1">
-              <a href="#" className="flex flex-col mb-4">
+              <Link href="/" className="flex flex-col mb-4">
                 <span className="font-serif-luxury text-2xl tracking-[0.25em] text-[#FAF8F5] uppercase">
                   Botanica
                 </span>
                 <span className="text-[9px] font-sans-clean tracking-[0.3em] uppercase text-[#889890] -mt-1">
                   Wellness
                 </span>
-              </a>
+              </Link>
               <p className="text-xs font-sans-clean text-[#83928B] leading-relaxed mb-6 font-light">
                 Restore • Rebalance • Rejuvenate
               </p>
@@ -438,9 +438,8 @@ export default function HomePage() {
                 Quick Links
               </h4>
               <ul className="space-y-3 text-xs font-sans-clean text-[#99A8A0]">
-                <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-                <li><a href="#treatments" className="hover:text-white transition-colors">Treatments</a></li>
-                <li><a href="#philosophy" className="hover:text-white transition-colors">Rituals</a></li>
+                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
                 <li><a href="#experience" className="hover:text-white transition-colors">Gallery</a></li>
                 <li><a href="#philosophy" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
