@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ChevronLeft,
@@ -93,8 +94,29 @@ export default function HomePage() {
     },
   ];
 
+  // Motion animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-[#F7F5F0] text-[#1A221E] font-sans antialiased selection:bg-[#1C2826] selection:text-[#E2D8C3]">
+    <div className="min-h-screen bg-[#F7F5F0] text-[#1A221E] font-sans antialiased selection:bg-[#1C2826] selection:text-[#E2D8C3] overflow-x-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
         
@@ -118,7 +140,12 @@ export default function HomePage() {
       `}</style>
 
       {/* Header / Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F7F5F0]/90 backdrop-blur-md border-b border-[#E3DEC3]/40">
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F7F5F0]/90 backdrop-blur-md border-b border-[#E3DEC3]/40"
+      >
         <div className="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
           <Link href="/" className="group flex flex-col">
             <span className="font-serif-luxury text-2xl font-normal tracking-[0.25em] text-[#1C2826] uppercase group-hover:text-[#3B4E47] transition-colors">
@@ -171,7 +198,7 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Hero Section */}
       <section
@@ -179,21 +206,38 @@ export default function HomePage() {
         className="relative min-h-screen pt-20 flex items-center overflow-hidden bg-[#F2EDE4]"
       >
         <div className="w-full min-h-[calc(100vh-80px)] flex flex-col lg:flex-row relative">
-          <div className="w-full lg:w-[48%] px-8 sm:px-12 lg:px-20 py-16 flex flex-col justify-between z-10">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="w-full lg:w-[48%] px-8 sm:px-12 lg:px-20 py-16 flex flex-col justify-between z-10"
+          >
             <div className="pt-8">
-              <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#6B756E] font-medium block mb-4">
+              <motion.span
+                variants={fadeInUp}
+                className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#6B756E] font-medium block mb-4"
+              >
                 Luxury Spa & Wellness
-              </span>
-              <h1 className="font-serif-luxury text-5xl sm:text-6xl xl:text-7xl font-normal leading-[1.08] text-[#141C1A] mb-6">
+              </motion.span>
+              <motion.h1
+                variants={fadeInUp}
+                className="font-serif-luxury text-5xl sm:text-6xl xl:text-7xl font-normal leading-[1.08] text-[#141C1A] mb-6"
+              >
                 The Art <br />
                 <span className="italic font-light">of</span> Unwinding.
-              </h1>
-              <p className="text-sm sm:text-base font-sans-clean font-light text-[#4A5550] max-w-md leading-relaxed mb-10">
+              </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-sm sm:text-base font-sans-clean font-light text-[#4A5550] max-w-md leading-relaxed mb-10"
+              >
                 A curated wellness experience designed to restore your mind,
                 body and natural glow.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-wrap items-center gap-6">
+              <motion.div
+                variants={fadeInUp}
+                className="flex flex-wrap items-center gap-6"
+              >
                 <Link
                   href="/book-demo"
                   className="px-7 py-3.5 bg-[#1C2826] hover:bg-[#2D3F3C] text-[#F7F5F0] text-xs font-sans-clean tracking-[0.2em] uppercase flex items-center gap-3 transition-all duration-300 group shadow-md"
@@ -208,15 +252,23 @@ export default function HomePage() {
                 >
                   Explore Our Philosophy
                 </a>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="w-full lg:w-[58%] lg:absolute lg:right-0 lg:top-0 lg:bottom-0 h-125 lg:h-full clip-hero-diagonal overflow-hidden bg-[#121B19]">
-            <img
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1.0] }}
+            className="w-full lg:w-[58%] lg:absolute lg:right-0 lg:top-0 lg:bottom-0 h-125 lg:h-full clip-hero-diagonal overflow-hidden bg-[#121B19]"
+          >
+            <motion.img
+              initial={{ scale: 1.15 }}
+              animate={{ scale: 1.05 }}
+              transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "mirror" }}
               src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1800"
               alt="Luxury Spa Serenity Sanctuary"
-              className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 hover:scale-100 opacity-90"
+              className="w-full h-full object-cover object-center opacity-90"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#101816]/70 via-transparent to-black/20"></div>
 
@@ -226,7 +278,7 @@ export default function HomePage() {
               </span>
               <div className="w-px h-12 bg-[#E0D8C8]/40"></div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -235,7 +287,13 @@ export default function HomePage() {
         id="treatments"
         className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto"
       >
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+        >
           <div>
             <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#737E77] font-medium block mb-3">
               Featured Services
@@ -257,50 +315,57 @@ export default function HomePage() {
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {treatments.map((treatment, index) => (
-            <Link
-              key={index}
-              href="/services"
-              className="group bg-[#EFECE6] border border-[#E0DBCF] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-lg flex flex-col justify-between"
-            >
-              <div>
-                <div className="h-60 overflow-hidden relative">
-                  <img
-                    src={treatment.image}
-                    alt={treatment.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="font-serif-luxury text-2xl font-normal text-[#1C2826] mb-2 group-hover:text-[#2A403A] transition-colors">
-                    {treatment.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-xs font-sans-clean text-[#6B7770] tracking-wider uppercase mb-3">
-                    <span>{treatment.duration}</span>
-                    <span>•</span>
-                    <span className="font-semibold text-[#1C2826]">
-                      {treatment.price}
-                    </span>
+            <motion.div key={index} variants={fadeInUp}>
+              <Link
+                href="/services"
+                className="group bg-[#EFECE6] border border-[#E0DBCF] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-lg flex flex-col justify-between h-full block"
+              >
+                <div>
+                  <div className="h-60 overflow-hidden relative">
+                    <img
+                      src={treatment.image}
+                      alt={treatment.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
                   </div>
-                  <p className="text-xs font-sans-clean text-[#5B6660] font-light leading-relaxed">
-                    {treatment.desc}
-                  </p>
-                </div>
-              </div>
 
-              <div className="px-6 pb-6 pt-2 flex justify-end">
-                <span className="w-8 h-8 rounded-full border border-[#C2BAB0] group-hover:border-[#1C2826] group-hover:bg-[#1C2826] group-hover:text-white text-[#1C2826] flex items-center justify-center transition-all duration-300">
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </Link>
+                  <div className="p-6">
+                    <h3 className="font-serif-luxury text-2xl font-normal text-[#1C2826] mb-2 group-hover:text-[#2A403A] transition-colors">
+                      {treatment.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-xs font-sans-clean text-[#6B7770] tracking-wider uppercase mb-3">
+                      <span>{treatment.duration}</span>
+                      <span>•</span>
+                      <span className="font-semibold text-[#1C2826]">
+                        {treatment.price}
+                      </span>
+                    </div>
+                    <p className="text-xs font-sans-clean text-[#5B6660] font-light leading-relaxed">
+                      {treatment.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-6 pb-6 pt-2 flex justify-end">
+                  <span className="w-8 h-8 rounded-full border border-[#C2BAB0] group-hover:border-[#1C2826] group-hover:bg-[#1C2826] group-hover:text-white text-[#1C2826] flex items-center justify-center transition-all duration-300">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Our Philosophy */}
@@ -309,30 +374,54 @@ export default function HomePage() {
         className="bg-[#121A18] text-[#F7F5F0] overflow-hidden"
       >
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
-          <div className="w-full lg:w-1/2 min-h-[450px] lg:min-h-[620px] relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="w-full lg:w-1/2 min-h-[450px] lg:min-h-[620px] relative overflow-hidden"
+          >
             <img
               src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1200"
               alt="Outdoor Sanctuary Bath"
               className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-[#121A18]/80 lg:to-[#121A18]"></div>
-          </div>
+          </motion.div>
 
-          <div className="w-full lg:w-1/2 p-10 sm:p-16 lg:p-20 flex flex-col justify-center">
-            <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#A0B0A8] block mb-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="w-full lg:w-1/2 p-10 sm:p-16 lg:p-20 flex flex-col justify-center"
+          >
+            <motion.span
+              variants={fadeInUp}
+              className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#A0B0A8] block mb-4"
+            >
               Our Philosophy
-            </span>
-            <h2 className="font-serif-luxury text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-[#FAF8F5] mb-6">
+            </motion.span>
+            <motion.h2
+              variants={fadeInUp}
+              className="font-serif-luxury text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-[#FAF8F5] mb-6"
+            >
               More Than a Spa. <br />
               <span className="italic font-light">A Way of Life.</span>
-            </h2>
-            <p className="text-sm font-sans-clean font-light text-[#BCC8C2] leading-relaxed mb-10 max-w-lg">
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-sm font-sans-clean font-light text-[#BCC8C2] leading-relaxed mb-10 max-w-lg"
+            >
               At Botanica, we believe true wellness goes beyond the treatment
               room. It's a journey of balance, mindfulness and self-care — woven
               into every moment of your day.
-            </p>
+            </motion.p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[#2A3834] mb-10">
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[#2A3834] mb-10"
+            >
               <div>
                 <span className="text-xs font-serif-luxury text-[#C7B288] block mb-1">
                   01
@@ -357,18 +446,18 @@ export default function HomePage() {
                   Expert Therapists
                 </span>
               </div>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div variants={fadeInUp}>
               <Link
                 href="/services"
                 className="inline-flex items-center gap-3 px-7 py-3 border border-[#3E524C] hover:border-[#C7B288] text-xs font-sans-clean tracking-[0.2em] uppercase text-[#E0E8E4] hover:text-[#C7B288] transition-all duration-300"
               >
-                <span>Visit Us</span>
+                <span>View Our Services</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -378,7 +467,13 @@ export default function HomePage() {
         className="py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto"
       >
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-          <div className="w-full lg:w-1/3 pt-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="w-full lg:w-1/3 pt-4"
+          >
             <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#717E77] block mb-3">
               The Experience
             </span>
@@ -396,34 +491,47 @@ export default function HomePage() {
               <span>Explore Gallery</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="w-full lg:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="w-full lg:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-4"
+          >
             {galleryImages.map((img, idx) => (
-              <Link
-                href="/gallery"
-                key={idx}
-                className="h-64 sm:h-80 overflow-hidden group relative bg-[#E2DDCF] block"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
-                <div className="absolute bottom-3 left-3 right-3 text-[10px] font-sans-clean tracking-widest text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase">
-                  {img.alt}
-                </div>
-              </Link>
+              <motion.div key={idx} variants={fadeInUp}>
+                <Link
+                  href="/gallery"
+                  className="h-64 sm:h-80 overflow-hidden group relative bg-[#E2DDCF] block"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                  <div className="absolute bottom-3 left-3 right-3 text-[10px] font-sans-clean tracking-widest text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase">
+                    {img.alt}
+                  </div>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Testimonials */}
       <section className="bg-[#121A18] text-[#F7F5F0] py-20 px-6 sm:px-12 lg:px-20 border-t border-[#23312E]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="flex items-end justify-between mb-16"
+          >
             <div>
               <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#A0B0A8] block mb-3">
                 Kind Words
@@ -457,38 +565,44 @@ export default function HomePage() {
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((item, idx) => (
-              <div
-                key={idx}
-                className={`p-8 bg-[#18221F] border border-[#273833] rounded-sm flex flex-col justify-between transition-all duration-300 ${
-                  idx === activeTestimonial
-                    ? "border-[#C7B288] shadow-lg"
-                    : "opacity-85 hover:opacity-100"
-                }`}
-              >
-                <p className="font-serif-luxury text-lg italic text-[#E2EAE5] leading-relaxed mb-8">
-                  "{item.quote}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={item.avatar}
-                    alt={item.name}
-                    className="w-11 h-11 rounded-full object-cover border border-[#3C5049]"
-                  />
-                  <div>
-                    <span className="text-xs font-sans-clean font-medium text-[#FAF8F5] block">
-                      {item.name}
-                    </span>
-                    <span className="text-[10px] font-sans-clean text-[#8C9C94] uppercase tracking-wider">
-                      Verified Client
-                    </span>
+            <AnimatePresence mode="wait">
+              {testimonials.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className={`p-8 bg-[#18221F] border border-[#273833] rounded-sm flex flex-col justify-between transition-all duration-300 ${
+                    idx === activeTestimonial
+                      ? "border-[#C7B288] shadow-lg scale-102"
+                      : "opacity-85 hover:opacity-100"
+                  }`}
+                >
+                  <p className="font-serif-luxury text-lg italic text-[#E2EAE5] leading-relaxed mb-8">
+                    "{item.quote}"
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={item.avatar}
+                      alt={item.name}
+                      className="w-11 h-11 rounded-full object-cover border border-[#3C5049]"
+                    />
+                    <div>
+                      <span className="text-xs font-sans-clean font-medium text-[#FAF8F5] block">
+                        {item.name}
+                      </span>
+                      <span className="text-[10px] font-sans-clean text-[#8C9C94] uppercase tracking-wider">
+                        Verified Client
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </section>

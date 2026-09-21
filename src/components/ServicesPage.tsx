@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 interface ServiceItem {
@@ -95,8 +96,48 @@ export default function ServicesPage() {
     ? services
     : services.filter(s => s.category === activeCategory);
 
+  // Animation Variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1.0] } 
+    }
+  };
+
+  const heroStagger = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+    }
+  };
+
+  const listContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 }
+    }
+  };
+
+  const listItem = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] } 
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.98, 
+      transition: { duration: 0.2, ease: "easeIn" } 
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#F7F5F0] text-[#1A221E] font-sans antialiased selection:bg-[#1C2826] selection:text-[#E2D8C3]">
+    <div className="min-h-screen bg-[#F7F5F0] text-[#1A221E] font-sans antialiased selection:bg-[#1C2826] selection:text-[#E2D8C3] overflow-x-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
         
@@ -110,7 +151,12 @@ export default function ServicesPage() {
       `}</style>
 
       {/* Header / Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F7F5F0]/90 backdrop-blur-md border-b border-[#E3DEC3]/40">
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F7F5F0]/90 backdrop-blur-md border-b border-[#E3DEC3]/40"
+      >
         <div className="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
           <Link href="/" className="group flex flex-col">
             <span className="font-serif-luxury text-2xl font-normal tracking-[0.25em] text-[#1C2826] uppercase group-hover:text-[#3B4E47] transition-colors">
@@ -130,36 +176,54 @@ export default function ServicesPage() {
           </nav>
 
           <div>
-            <Link
-              href="/book-demo"
-              className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
-            >
-              Book a Demo
-            </Link>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href="/book-demo"
+                className="inline-block px-6 py-2.5 text-xs font-sans-clean tracking-[0.15em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] border border-[#1C2826] rounded-sm transition-all duration-300 shadow-sm"
+              >
+                Book a Demo
+              </Link>
+            </motion.div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Services Hero Section */}
       <section className="pt-32 pb-16 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-start justify-between gap-12 relative z-10">
-          <div className="max-w-2xl">
-            <span className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#6B756E] font-medium block mb-3">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={heroStagger}
+            className="max-w-2xl"
+          >
+            <motion.span variants={fadeInUp} className="text-[11px] font-sans-clean tracking-[0.3em] uppercase text-[#6B756E] font-medium block mb-3">
               Pricing
-            </span>
-            <h1 className="font-serif-luxury text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.08] text-[#141C1A] mb-6">
+            </motion.span>
+            <motion.h1 variants={fadeInUp} className="font-serif-luxury text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.08] text-[#141C1A] mb-6">
               Transparent Pricing. <br />
               Exceptional Experiences.
-            </h1>
-            <p className="text-sm sm:text-base font-sans-clean font-light text-[#4A5550] max-w-lg leading-relaxed">
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="text-sm sm:text-base font-sans-clean font-light text-[#4A5550] max-w-lg leading-relaxed">
               Invest in your well-being with our thoughtfully curated packages and treatments. Choose from single sessions or holistic wellness journeys designed for lasting results.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          {/* Botanical Leaf Art Element */}
-          <div className="hidden md:flex flex-col items-end pt-2 relative">
+          {/* Botanical Leaf Art Element with Breathing Animation */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            className="hidden md:flex flex-col items-end pt-2 relative"
+          >
             <div className="relative w-48 h-64 flex items-center justify-center">
-              <svg className="w-full h-full drop-shadow-md" viewBox="0 0 200 280" fill="none">
+              <motion.svg 
+                animate={{ rotate: [0, 1.5, -1.5, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-full drop-shadow-md origin-bottom" 
+                viewBox="0 0 200 280" 
+                fill="none"
+              >
                 <defs>
                   <linearGradient id="leafGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#3E5448" />
@@ -181,80 +245,118 @@ export default function ServicesPage() {
                 {/* Right Top Leaf */}
                 <path d="M135 110 C 185 85, 195 40, 175 15 C 135 25, 120 65, 130 105 Z" fill="url(#leafGrad2)" />
                 <path d="M135 110 C 155 75, 170 45, 175 15" stroke="#789382" strokeWidth="1" opacity="0.6" />
-              </svg>
+              </motion.svg>
             </div>
 
-            <div className="text-right mt-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="text-right mt-2"
+            >
               <span className="text-[10px] font-sans-clean tracking-[0.25em] uppercase text-[#526058] max-w-[160px] block font-medium leading-relaxed">
                 Wellness is a journey <br /> not a destination
               </span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Category Filter Tabs */}
+      {/* Category Filter Tabs with Layout Animations */}
       <section className="px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto mb-12">
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 border-b border-[#E0DBCF] pb-6">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2 text-xs font-sans-clean tracking-[0.15em] uppercase transition-all duration-300 rounded-full ${
-                activeCategory === cat.id
-                  ? 'bg-[#1C2826] text-[#F7F5F0] shadow-sm'
-                  : 'bg-[#EFECE6] text-[#4D5A54] hover:bg-[#E3DEC3]/60 hover:text-[#1C2826]'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-wrap items-center gap-3 sm:gap-4 border-b border-[#E0DBCF] pb-6"
+        >
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`relative px-5 py-2 text-xs font-sans-clean tracking-[0.15em] uppercase transition-colors duration-300 rounded-full ${
+                  isActive ? 'text-[#F7F5F0]' : 'bg-[#EFECE6] text-[#4D5A54] hover:bg-[#E3DEC3]/60 hover:text-[#1C2826]'
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeCategoryIndicator"
+                    className="absolute inset-0 bg-[#1C2826] rounded-full shadow-sm"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{cat.label}</span>
+              </button>
+            );
+          })}
+        </motion.div>
       </section>
 
-      {/* Services List Section */}
+      {/* Services List Section with AnimatePresence Stagger */}
       <section className="px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto pb-28">
-        <div className="space-y-4">
-          {filteredServices.map((service) => (
-            <div
-              key={service.id}
-              className="group bg-[#EFECE6]/80 hover:bg-[#EFECE6] border border-[#E0DBCF] p-4 sm:p-6 rounded-sm transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:shadow-md"
-            >
-              <div className="flex items-start sm:items-center gap-5 sm:gap-8">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-sm overflow-hidden shrink-0 relative bg-[#DCD7CB]">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
+        <motion.div 
+          layout
+          variants={listContainer}
+          initial="hidden"
+          animate="visible"
+          className="space-y-4"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredServices.map((service) => (
+              <motion.div
+                key={service.id}
+                layout
+                variants={listItem}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                whileHover={{ y: -2, transition: { duration: 0.2 } }}
+                className="group bg-[#EFECE6]/80 hover:bg-[#EFECE6] border border-[#E0DBCF] hover:border-[#C2BAB0] p-4 sm:p-6 rounded-sm transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:shadow-md"
+              >
+                <div className="flex items-start sm:items-center gap-5 sm:gap-8">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-sm overflow-hidden shrink-0 relative bg-[#DCD7CB]">
+                    <motion.img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
 
-                <div>
-                  <h3 className="font-serif-luxury text-2xl font-normal text-[#1C2826] mb-1">
-                    {service.title}
-                  </h3>
-                  <p className="text-xs font-sans-clean text-[#5B6660] font-light max-w-xl leading-relaxed mb-3">
-                    {service.description}
-                  </p>
-                  <div className="flex items-center gap-3 text-[11px] font-sans-clean uppercase tracking-wider text-[#6B7770]">
-                    <span>{service.duration}</span>
-                    <span>•</span>
-                    <span className="font-semibold text-[#1C2826]">{service.price}</span>
+                  <div>
+                    <h3 className="font-serif-luxury text-2xl font-normal text-[#1C2826] mb-1 group-hover:text-[#2C3E3A] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs font-sans-clean text-[#5B6660] font-light max-w-xl leading-relaxed mb-3">
+                      {service.description}
+                    </p>
+                    <div className="flex items-center gap-3 text-[11px] font-sans-clean uppercase tracking-wider text-[#6B7770]">
+                      <span>{service.duration}</span>
+                      <span>•</span>
+                      <span className="font-semibold text-[#1C2826]">{service.price}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="w-full sm:w-auto flex justify-end shrink-0 pt-2 sm:pt-0">
-                <Link
-                  href="/book-demo"
-                  className="w-full sm:w-auto px-7 py-3 text-center text-xs font-sans-clean tracking-[0.18em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] rounded-full transition-all duration-300 shadow-sm"
-                >
-                  Book Now
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+                <div className="w-full sm:w-auto flex justify-end shrink-0 pt-2 sm:pt-0">
+                  <motion.div 
+                    whileHover={{ scale: 1.03 }} 
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full sm:w-auto"
+                  >
+                    <Link
+                      href="/book-demo"
+                      className="block w-full sm:w-auto px-7 py-3 text-center text-xs font-sans-clean tracking-[0.18em] uppercase text-[#F7F5F0] bg-[#1C2826] hover:bg-[#2C3E3A] rounded-full transition-all duration-300 shadow-sm"
+                    >
+                      Book Now
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       {/* Footer */}
